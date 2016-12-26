@@ -30,6 +30,13 @@
 # [IN] Take in new pay requeust
 # Add credits
 
+
+### TO dev
+## HiP/HiC
+# Import instructions
+## LoP/Lock
+# Devastation status
+
 import socket
 import time
 import threading
@@ -43,6 +50,7 @@ class Player(object):
         self.name = name
         self.alive = True
         self.cash = 2000
+        self.destroy = False
 
     def init_fire(self):
         target = input("Enter: ")
@@ -64,11 +72,18 @@ class Player(object):
         msg_code = "[X] ORIGIN |" + name + "| TRGTL |" + target + "| MSSG |" + msg
         return msg_code
 
+    def printEnd():
+        end_file = open("gam_over.txt","r")
+
+        for line in end_file:
+            print(line)
+
     def inject(self, funds):
         self.cash = self.cash + funds
 
     def chat(self, message):
         pass
+
 
 class Proj(object):
     def __init__(self, launch_time, origin, trgt):
@@ -131,9 +146,21 @@ def sendMessage(instruction_code):
     #rT.join()
     s.close()
 
-def recMessage():
+def refresh():
+    # try:
+    #     tLock.acquire()
+    #     while True:
+    #         data, addr = sock.recvfrom(1024)
+    #         print(str(data).replace("b", ""))
+    # except:
+    #     pass
+    # finally:
+    #     tLock.release()
     pass
 
+def eliminate_player(user):
+    user.destroy = True
+    user.printEnd()
 
 entry = False
 
@@ -145,6 +172,8 @@ while(entry is False):
 exit = False
 
 while(exit is False):
+    refresh()
+
     print("[1] Broadcast")
     print("[2] Private Message")
     print("[3] Football")
