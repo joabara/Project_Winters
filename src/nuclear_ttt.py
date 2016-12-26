@@ -49,6 +49,21 @@ class Player(object):
         fire_code = "[F] ORIGIN |" + name + "| TRGTL |" + target + "| ETA 10 turns"
         return fire_code
 
+    def init_pmt(self):
+        target = input("Enter target name: ")
+        amt = input("Input amt: ")
+        pmt_code = "[P] ORIGIN |" + name + "| TRGTL |" + target + "| AMT " + amt
+        return pmt_code
+
+    def sendTransmission(self):
+        target = input("Enter target name: ")
+        msg = input("Message: ")
+
+        # ENCRYPT W/ CAESAR CIPHER HERE
+
+        msg_code = "[X] ORIGIN |" + name + "| TRGTL |" + target + "| MSSG |" + msg
+        return msg_code
+
     def inject(self, funds):
         self.cash = self.cash + funds
 
@@ -116,6 +131,9 @@ def sendMessage(instruction_code):
     #rT.join()
     s.close()
 
+def recMessage():
+    pass
+
 
 entry = False
 
@@ -136,7 +154,8 @@ while(exit is False):
 
     action = input("$ ")
 
-    if(action is "3"):
-        sendMessage(user.init_fire())
+    if(action is "2"): sendMessage(user.sendTransmission())
+    if(action is "3"): sendMessage(user.init_fire())
+    if(action is "4"): sendMessage(user.init_pmt())
     if(action is "q"):
         exit = True
