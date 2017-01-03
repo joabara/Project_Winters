@@ -94,6 +94,7 @@ class Proj(object):
         # run probability detonation "[F] ORIGIN |<name>| TRGT |<target>| IMPACT |<success>|"
         pass
 
+
 class Space(object):
     def __init__(self, players):
         self.players = players
@@ -106,6 +107,7 @@ class Space(object):
         # for all players raise stakes by 1000
         pass
 
+
 def receiving(name, sock):
     while not exit:
         try:
@@ -117,6 +119,7 @@ def receiving(name, sock):
             pass
         finally:
             tLock.release()
+
 
 def sendMessage(instruction_code):
     tLock = threading.Lock()
@@ -146,6 +149,7 @@ def sendMessage(instruction_code):
     #rT.join()
     s.close()
 
+
 def refresh():
     # try:
     #     tLock.acquire()
@@ -158,9 +162,14 @@ def refresh():
     #     tLock.release()
     pass
 
+
 def eliminate_player(user):
     user.destroy = True
     user.printEnd()
+
+
+
+
 
 entry = False
 
