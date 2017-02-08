@@ -15,18 +15,19 @@ class GameTime(object):
         game.print_grid()
         game.print_game_stats()
 
-
+os.system("cls")
 y = GameTime(grid_space.GameSpace(25,25))
 
 
 # GAME LOOP
-exit = False
-while(!exit):
-
-    turn_done = False
-    while(!turn_done):
-        
-
+# exit = False
+# while(not exit):
+#
+#     turn_done = False
+#     while(not turn_done):
+#         print("Choose an option")
+#
+#
 
 y.game.print_grid()
 y.game.print_game_stats()

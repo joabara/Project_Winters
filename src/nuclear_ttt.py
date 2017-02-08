@@ -55,7 +55,8 @@ class Player(object):
         self.position = []
         self.color = color
 
-
+    def move(self):
+        direction = input()
     def init_fire(self):
         target = input("Enter: ")
         fire_code = "[F] ORIGIN |" + name + "| TRGTL |" + target + "| ETA 10 turns"

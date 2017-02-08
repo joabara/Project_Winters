@@ -59,9 +59,9 @@ class GameSpace(object):
             py = str(player.position[1])
             coords = ','.join([px,py])
 
-            print(player.name)
-            print("Positon: %s" % (coords))
-            print(colored("Cash: $ %d") % (player.cash ), player.color)
+            print(colored(player.name, player.color))
+            print(colored(("Positon: %s" % (coords)), player.color))
+            print(colored((("Cash: $ %d") % (player.cash )), player.color))
             print()
 
     def init(self):
