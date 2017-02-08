@@ -30,9 +30,6 @@ while not exit:
     turn_player = y.game.players[y.turn]
     move_tokens = 0
 
-
-
-
     while(turn_done is not True):
         os.system("cls")
         y.game.update_map()
