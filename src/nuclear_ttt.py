@@ -40,17 +40,21 @@
 import socket
 import time
 import threading
+from random import randint
 
 tLock = threading.Lock()
 exit = False
 
 
 class Player(object):
-    def __init__(self, name):
+    def __init__(self, name, color):
         self.name = name
         self.alive = True
         self.cash = 2000
         self.destroy = False
+        self.position = []
+        self.color = color
+
 
     def init_fire(self):
         target = input("Enter: ")
@@ -169,31 +173,31 @@ def eliminate_player(user):
 
 
 
-
-
-entry = False
-
-while(entry is False):
-    name = input("Name: ")
-    user = Player(name)
-    entry = True
-
-exit = False
-
-while(exit is False):
-    refresh()
-
-    print("[1] Broadcast")
-    print("[2] Private Message")
-    print("[3] Football")
-    print("[4] Payment")
-    print("[Q] Exit")
-    print("")
-
-    action = input("$ ")
-
-    if(action is "2"): sendMessage(user.sendTransmission())
-    if(action is "3"): sendMessage(user.init_fire())
-    if(action is "4"): sendMessage(user.init_pmt())
-    if(action is "q"):
-        exit = True
+#
+#
+# entry = False
+#
+# while(entry is False):
+#     name = input("Name: ")
+#     user = Player(name)
+#     entry = True
+#
+# exit = False
+#
+# while(exit is False):
+#     refresh()
+#
+#     print("[1] Broadcast")
+#     print("[2] Private Message")
+#     print("[3] Football")
+#     print("[4] Payment")
+#     print("[Q] Exit")
+#     print("")
+#
+#     action = input("$ ")
+#
+#     if(action is "2"): sendMessage(user.sendTransmission())
+#     if(action is "3"): sendMessage(user.init_fire())
+#     if(action is "4"): sendMessage(user.init_pmt())
+#     if(action is "q"):
+#         exit = True
