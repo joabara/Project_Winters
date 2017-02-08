@@ -107,7 +107,6 @@ while not exit:
             print("-----------------------------------")
             report_done = input("$ Press enter to finish.")
 
-
         # DEFENSE CENTER
         if action is "4":
             print("Welcome to the Defense Center: ")
