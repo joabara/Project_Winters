@@ -35,6 +35,7 @@ while not exit:
         os.system("cls")
         y.game.update_map()
         print("Round:", y.round, "Turn:", y.turn)
+        y.game.print_news_reel()
         y.game.print_grid()
         y.game.print_game_stats()
 
@@ -71,18 +72,33 @@ while not exit:
             move_tokens+=1
 
         # BROADCAST
+        if action is "1":
+            print("Welcome to the Press Room: ")
+            print("---------------------------")
+            broad = input("$ Broadcast: ")
+            news = [turn_player.name, ":", broad]
+            news = ' '.join(news)
+            y.game.newsreel.append(news)
+
 
         # PRIVATE Message
+        if action is "2":
+            print("Welcome to the Secure Message Center:")
+            print("--------------------------------------")
+            for player in y.game.players:
+                print("     ", player.name)
+            print("--------------------------------------")
+            message = input("$ Enter Message: ")
 
         # Intelligence CENTER
         if action is "3":
             print("Welcome to the Intelligence Center: ")
-            print("-------------------------------")
+            print("-----------------------------------")
             print("     Missle Count:", 0)
             print("     Our Controlled Space:", len(turn_player.explored))
             print("     Revenue per turn:  $", len(turn_player.explored)*50)
             print("     Inventory:")
-            print("-------------------------------")
+            print("-----------------------------------")
             report_done = input("$ Press enter to finish.")
 
 

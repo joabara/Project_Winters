@@ -12,19 +12,27 @@ class GameSpace(object):
         self.row = row
         self.col = col
         self.players = []
+        self.newsreel = []
 
 
         local_grid = [[]]
-        i = 1
-        while(i < self.col-1):
+        i = 0
+        xc = 0
+        while(i < self.col):
             local_grid.append([])
-            j = 1
+            j = 0
+            if xc > 9: xc = 0
+            local_grid[i].append(" ")
+            local_grid[i].append(str(xc))
             local_grid[i].append(str("|"))
-            while(j < self.row-1):
+            while(j < self.row):
                 local_grid[i].append(str("O"))
                 j+=1
             local_grid[i].append(str("|"))
+            local_grid[i].append(str(xc))
+            xc+=1
             i+=1
+        local_grid.remove(local_grid[i])
         self.grid = local_grid
 
     def add_player(self, player):
@@ -32,32 +40,46 @@ class GameSpace(object):
         self.players.append(player)
 
     def update_map(self):
-        i = 1
-        while(i < self.col-1):
-            j = 1
-            while(j < self.row-1):
+        i = 0
+        while(i < self.col):
+            j = 0
+            while(j < self.row):
                 for player in self.players:
                     if int(player.position[0])==j and int(player.position[1])==i:
-                        self.grid[i][j] = colored("X", player.color)
+                        self.grid[i][j+3] = colored("X", player.color)
                 j+=1
             i+=1
 
 
 
-
-
+    def print_news_reel(self):
+        print("-------------------------------------------------------")
+        print("NEWS & BROADCASTS:")
+        for line in self.newsreel:
+            print(line)
+        print("-------------------------------------------------------")
+        print()
 
     def print_grid(self):
         for row in self.grid:
             print(' '.join(row))
+        print()
 
     def print_game_stats(self):
         i = 0
+        xc = 0
         line = []
-        while(i < self.col*2):
-            line.append("-")
+        line.append("     ")
+        x = []
+        x.append("     ")
+        while(i < self.col):
+            line.append("--")
+            if xc > 9: xc = 0
+            x.append(str(xc))
             i+=1
+            xc+=1
         print(''.join(line))
+        print(' '.join(x))
         for player in self.players:
             px = str(player.position[0])
             py = str(player.position[1])
@@ -76,23 +98,3 @@ class GameSpace(object):
             else:
                 chars = player.split(' ')
                 self.add_player(nuclear_ttt.Player(chars[0], chars[1]))
-
-
-
-
-#
-# game = GameSpace(25,25)
-#
-# u = nuclear_ttt.Player("Joe", "red")
-#
-# game.add_player(u)
-#
-# print(game.players[0].position)
-# game.update_map()
-#
-#
-# game.print_grid()
-# game.print_game_stats()
-# quit()
-# exit()
-# sys.exit()
