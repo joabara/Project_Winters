@@ -43,7 +43,7 @@ while not exit:
         print("[w,a,s,d] Move")
         print("[2] Broadcast")
         print("[3] Private Message")
-        print("[4] Football")
+        print("[4] Defense Center")
         print("[5] Payment")
         print("[6] Store")
         print("[7] END TURN")
@@ -52,7 +52,7 @@ while not exit:
         action = input("$ ")
 
         # MOVEMENT
-        if(action in ["w", "a", "s", "d"] and move_tokens < 3):
+        if action in ["w", "a", "s", "d"] and move_tokens < 3:
             if action is "w" :
                 turn_player.position[1] = turn_player.position[1]-1
             if action is "a" :
@@ -69,6 +69,16 @@ while not exit:
             turn_player.explored.append([turn_player.position[0], turn_player.position[1]])
             move_tokens+=1
 
+        # BROADCAST
+
+        # PRIVATE Message
+
+        # DEFENSE CENTER
+
+        # PAYMENT
+
+        # STORE
+        if action
 
         if action is "7":
             turn_done = True
