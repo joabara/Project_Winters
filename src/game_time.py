@@ -35,7 +35,10 @@ while not exit:
         os.system("cls")
         y.game.update_map()
         print("Round:", y.round, "Turn:", y.turn)
-        y.game.print_news_reel()
+        print("--------------------------------------------------------------------------")
+        print()
+        print()
+        # y.game.print_news_reel()
         y.game.print_grid()
         y.game.print_game_stats()
 
@@ -68,6 +71,9 @@ while not exit:
                 if player.name is not turn_player.name:
                     if [turn_player.position[0], turn_player.position[1]] in player.explored:
                         player.explored.remove(turn_player.position)
+                        news_piece = [turn_player.name, "has attacked", player.name]
+                        news_piece = ' '.join(news_piece)
+                        y.game.newsreel.append(news_piece)
             turn_player.explored.append([turn_player.position[0], turn_player.position[1]])
             move_tokens+=1
 

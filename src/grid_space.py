@@ -63,7 +63,6 @@ class GameSpace(object):
     def print_grid(self):
         for row in self.grid:
             print(' '.join(row))
-        print()
 
     def print_game_stats(self):
         i = 0
@@ -80,6 +79,7 @@ class GameSpace(object):
             xc+=1
         print(''.join(line))
         print(' '.join(x))
+        print()
         for player in self.players:
             px = str(player.position[0])
             py = str(player.position[1])
