@@ -54,9 +54,13 @@ class Player(object):
         self.destroy = False
         self.position = []
         self.color = color
+        self.explored= [[]]
+        self.inv = []
 
     def move(self):
-        direction = input()
+        direction = input("Direction? (l, r, u, d): ")
+        return str(direction)
+
     def init_fire(self):
         target = input("Enter: ")
         fire_code = "[F] ORIGIN |" + name + "| TRGTL |" + target + "| ETA 10 turns"

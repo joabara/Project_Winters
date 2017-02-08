@@ -43,6 +43,8 @@ class GameSpace(object):
             i+=1
 
 
+
+
     def print_grid(self):
         for row in self.grid:
             print(' '.join(row))
@@ -60,7 +62,7 @@ class GameSpace(object):
             coords = ','.join([px,py])
 
             print(colored(player.name, player.color))
-            print(colored(("Positon: %s" % (coords)), player.color))
+            print(colored(("Postion: %s" % (coords)), player.color))
             print(colored((("Cash: $ %d") % (player.cash )), player.color))
             print()
 
