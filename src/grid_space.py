@@ -28,7 +28,7 @@ class GameSpace(object):
         self.grid = local_grid
 
     def add_player(self, player):
-        player.position = [randint(1, self.row-1), randint(1, self.col-1)]
+        player.position = [randint(4, self.row-4), randint(4, self.col-4)]
         self.players.append(player)
 
     def update_map(self):
@@ -55,25 +55,40 @@ class GameSpace(object):
             i+=1
         print(''.join(line))
         for player in self.players:
+            px = str(player.position[0])
+            py = str(player.position[1])
+            coords = ','.join([px,py])
+
             print(player.name)
-            print(("Cash: $ %d") % (player.cash ))
+            print("Positon: %s" % (coords))
+            print(colored("Cash: $ %d") % (player.cash ), player.color)
+            print()
+
+    def init(self):
+        done = False
+        while not done:
+            player = str(input("Add a player <name> <color>. Enter x when finished: "))
+            if player == str("x"): done = True
+            else:
+                chars = player.split(' ')
+                self.add_player(nuclear_ttt.Player(chars[0], chars[1]))
 
 
 
 
-
-game = GameSpace(25,25)
-
-u = nuclear_ttt.Player("Joe", "red")
-
-game.add_player(u)
-
-print(game.players[0].position)
-game.update_map()
-
-
-game.print_grid()
-game.print_game_stats()
-quit()
-exit()
-sys.exit()
+#
+# game = GameSpace(25,25)
+#
+# u = nuclear_ttt.Player("Joe", "red")
+#
+# game.add_player(u)
+#
+# print(game.players[0].position)
+# game.update_map()
+#
+#
+# game.print_grid()
+# game.print_game_stats()
+# quit()
+# exit()
+# sys.exit()
