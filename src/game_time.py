@@ -41,8 +41,9 @@ while not exit:
         print("It's", turn_player.name, "'s turn")
 
         print("[w,a,s,d] Move")
-        print("[2] Broadcast")
-        print("[3] Private Message")
+        print("[1] Broadcast")
+        print("[2] Private Message")
+        print("[3] Intelligence Center")
         print("[4] Defense Center")
         print("[5] Payment")
         print("[6] Store")
@@ -52,7 +53,7 @@ while not exit:
         action = input("$ ")
 
         # MOVEMENT
-        if action in ["w", "a", "s", "d"] and move_tokens < 3:
+        if action in ["w", "a", "s", "d"] and move_tokens < 5:
             if action is "w" :
                 turn_player.position[1] = turn_player.position[1]-1
             if action is "a" :
@@ -73,23 +74,51 @@ while not exit:
 
         # PRIVATE Message
 
+        # Intelligence CENTER
+        if action is "3":
+            print("Welcome to the Intelligence Center: ")
+            print("-------------------------------")
+            print("     Missle Count:", 0)
+            print("     Our Controlled Space:", len(turn_player.explored))
+            print("     Revenue per turn:  $", len(turn_player.explored)*50)
+            print("     Inventory:")
+            print("-------------------------------")
+            report_done = input("$ Press enter to finish.")
+
+
         # DEFENSE CENTER
+        if action is "4":
+            print("Welcome to the Defense Center: ")
+            print("-------------------------------")
+            print("     Missle Count: ")
+            print("     Controlled Space: ")
+            print("-------------------------------")
+            print("Options: ")
+            print("[1] Message opponent")
+            print("[2] Initiate nuclear missle launch")
+            print("[3]")
+            report_done = input("$ Press enter to finish.")
 
         # PAYMENT
 
         # STORE
-        if action
+        if action is "6":
+            print("Welcome to the Store!:")
+            print("1 [$10,000] Movement Speed - Move one more space per turn")
+            print("2 [$25,000] Tax System - Get $10 more per tile you own")
+            print("3 [$50,000] Iron Dome - Reduce your chance of getting nuked by 15 percent")
+            print("4 [$75,000] Coup - Opponents tile can occasionally switch to your side")
+            print("5 [$100,000] Ballistic Missle - Add a missle to your inventory")
+            print("6 [$500,000] Rigged - hack an opponent and use their missles")
+            print("7 [$1,000,000] Endgame - Unlimited Missles per turn")
+            print ()
+            report_done = input("$ Press enter to exit Store.")
+
 
         if action is "7":
             turn_done = True
             print("Turn over!")
 
-
-
-
-        ### OTHER CONDITIONS
-        # if move_tokens is 3:
-        #     turn_done = True
 
         if action is "q":
             turn_done = True
