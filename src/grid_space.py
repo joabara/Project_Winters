@@ -45,6 +45,8 @@ class GameSpace(object):
 
 
 
+
+
     def print_grid(self):
         for row in self.grid:
             print(' '.join(row))
